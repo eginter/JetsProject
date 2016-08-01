@@ -70,6 +70,7 @@ public class AirportPrompter {
 			 */
 
 		} while (input != 6);
+		System.out.println("Exiting program.");
 	}
 
 	/**
