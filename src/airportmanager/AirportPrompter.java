@@ -16,16 +16,10 @@ public class AirportPrompter {
 	// Methods
 	public void menu() {
 
-		/**
-		 * User Story #1 Minimum: There is a menu with 5 options: 1. List fleet
-		 * 2. View fastest jet 3. View jet with longest range 4. Add a jet to
-		 * Fleet 5. Quit
-		 */
-
 		int input;
 		do {
 
-			System.out.println("\n\n***********************************************");
+			System.out.println("\n***********************************************");
 			System.out.println("|          Airport Inventory Tracker \u2708        |");
 			System.out.println("|                                             |");
 			System.out.println("| \u2708 1. List fleet.                            |");
@@ -41,41 +35,33 @@ public class AirportPrompter {
 			switch (input) {
 			case 1:
 				displayFleet(airport);
+				enterToContinue();
 				break;
 			case 2:
 				displayFastestJet(airport);
+				enterToContinue();
 				break;
 			case 3:
 				displayLongestRange(airport);
+				enterToContinue();
 				break;
 			case 4:
 				keyboard.nextLine();
 				addJet();
+				enterToContinue();
 				break;
 			case 5:
 				keyboard.nextLine();
 				hirePilot();
+				enterToContinue();
 				break;
 			default:
 				break;
 			}
 
-			/**
-			 * User Story #4
-			 * 
-			 * Quit exits the program.
-			 */
-
 		} while (input != 6);
 		System.out.println("Exiting program.");
 	}
-
-	/**
-	 * User Story #2
-	 *
-	 * List fleet prints out the model, speed, range, and price of each jet.
-	 * (There must be at least 5 jets stored when the program starts).
-	 */
 
 	public void displayFleet(Airport a) {
 		System.out.println("Current Fleet: \n");
@@ -96,13 +82,6 @@ public class AirportPrompter {
 		}
 	}
 
-	/**
-	 * User Story #3
-	 * 
-	 * The view fastest jet and longest range options both print out all of the
-	 * information about their jets.
-	 */
-
 	public void displayLongestRange(Airport a) {
 		Jet longRangeJet = a.getLongestRange();
 		System.out.println("The jet with the longest range is " + longRangeJet.getModel() + " at "
@@ -116,12 +95,6 @@ public class AirportPrompter {
 				+ " miles per hour.\n");
 		showJetDetails(fastestJet);
 	}
-
-	/**
-	 * User Story #5
-	 * 
-	 * A user can add custom jets to the fleet.
-	 */
 
 	public void addJet() {
 		System.out.print("    Input jet model: ");
@@ -150,6 +123,15 @@ public class AirportPrompter {
 		Pilot newPilot = updatedPilots[updatedPilots.length - 1];
 		System.out.println(newPilot.getRank() + " " + newPilot.getFirstName() + " " + newPilot.getLastName()
 				+ " added to airport.");
+	}
+
+	public void enterToContinue() {
+		System.out.println("\nPress enter to continue...");
+		try {
+			System.in.read();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
