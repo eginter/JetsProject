@@ -17,14 +17,9 @@ public class AirportPrompter {
 	public void menu() {
 
 		/**
-		 * User Story #1
-		 * 
-		 * There is a menu with 5 options: 
-		 * 1. List fleet 
-		 * 2. View fastest jet 
-		 * 3. View jet with longest range 
-		 * 4. Add a jet to Fleet 
-		 * 5. Quit
+		 * User Story #1 Minimum: There is a menu with 5 options: 1. List fleet
+		 * 2. View fastest jet 3. View jet with longest range 4. Add a jet to
+		 * Fleet 5. Quit
 		 */
 
 		int input;
@@ -37,7 +32,11 @@ public class AirportPrompter {
 			System.out.println("* 2. View fastest jet.                        *");
 			System.out.println("* 3. View jet with longest range.             *");
 			System.out.println("* 4. Add a jet to fleet.                      *");
-			System.out.println("* 5. Quit program.                            *");
+			System.out.println("* 5. Hire a new pilot.                        *");
+			System.out.println("* 6. Quit                                     *");
+			System.out.println("*                                             *");
+			System.out.println("*                                             *");
+			System.out.println("*                                             *");
 			System.out.println("*                                             *");
 			System.out.println("***********************************************");
 			input = keyboard.nextInt();
@@ -56,6 +55,10 @@ public class AirportPrompter {
 				keyboard.nextLine();
 				addJet();
 				break;
+			case 5:
+				keyboard.nextLine();
+				hirePilot();
+				break;
 			default:
 				break;
 			}
@@ -66,7 +69,7 @@ public class AirportPrompter {
 			 * Quit exits the program.
 			 */
 
-		} while (input != 5);
+		} while (input != 6);
 	}
 
 	/**
@@ -86,7 +89,13 @@ public class AirportPrompter {
 	public void showJetDetails(Jet jet) {
 		System.out.printf(jet.getModel() + "\tSpeed: Mach " + "%.2f" + "\tRange: " + jet.getRange() + "\tPrice: "
 				+ jet.priceToMils() + "M \n", jet.mphToMach());
+		if (jet.hasPilot()) {
+			System.out.println("Piloted by " + jet.getPilot().getRank() + " " + jet.getPilot().getFirstName() + " "
+					+ jet.getPilot().getLastName());
 
+		} else {
+			System.out.println("Currently no pilot assigned.");
+		}
 	}
 
 	/**
@@ -128,5 +137,20 @@ public class AirportPrompter {
 		airport.addJet(new Jet(model, speed, range, price));
 		Jet[] updatedJets = airport.getJets();
 		System.out.println(updatedJets[updatedJets.length - 1].getModel() + " added to airport.");
+	}
+
+	public void hirePilot() {
+		System.out.println("Input new pilot's rank: ");
+		String rank = keyboard.nextLine();
+		System.out.println("Input pilot's first name: ");
+		String firstName = keyboard.nextLine();
+		System.out.println("Input pilot's last name: ");
+		String lastName = keyboard.nextLine();
+		Pilot pilot = new Pilot(rank, firstName, lastName);
+		airport.addPilot(pilot);
+		Pilot[] updatedPilots = airport.getPilots();
+		Pilot newPilot = updatedPilots[updatedPilots.length - 1];
+		System.out.println(newPilot.getRank() + " " + newPilot.getFirstName() + " " + newPilot.getLastName()
+				+ " added to airport.");
 	}
 }
