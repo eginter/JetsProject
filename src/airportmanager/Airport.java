@@ -71,6 +71,12 @@ public class Airport {
 		}
 		newArray[newArray.length - 1] = j;
 		setJets(newArray);
+		for (Pilot pilot : pilots) {
+			if (!pilot.isAssignedToJet()) {
+				j.setPilot(pilot);
+				break;
+			}
+		}
 	}
 
 	public void addPilot(Pilot p) {
