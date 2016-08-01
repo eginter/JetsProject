@@ -26,18 +26,15 @@ public class AirportPrompter {
 		do {
 
 			System.out.println("\n\n***********************************************");
-			System.out.println("*          Airport Inventory Tracker          *");
-			System.out.println("*                                             *");
-			System.out.println("* 1. List fleet.                              *");
-			System.out.println("* 2. View fastest jet.                        *");
-			System.out.println("* 3. View jet with longest range.             *");
-			System.out.println("* 4. Add a jet to fleet.                      *");
-			System.out.println("* 5. Hire a new pilot.                        *");
-			System.out.println("* 6. Quit                                     *");
-			System.out.println("*                                             *");
-			System.out.println("*                                             *");
-			System.out.println("*                                             *");
-			System.out.println("*                                             *");
+			System.out.println("|          Airport Inventory Tracker \u2708        |");
+			System.out.println("|                                             |");
+			System.out.println("| \u2708 1. List fleet.                            |");
+			System.out.println("| \u2708 2. View fastest jet.                      |");
+			System.out.println("| \u2708 3. View jet with longest range.           |");
+			System.out.println("| \u2708 4. Add a jet to fleet.                    |");
+			System.out.println("| \u2708 5. Hire a new pilot.                      |");
+			System.out.println("| \u2708 6. Quit                                   |");
+			System.out.println("|                                             |");
 			System.out.println("***********************************************");
 			input = keyboard.nextInt();
 
@@ -154,4 +151,5 @@ public class AirportPrompter {
 		System.out.println(newPilot.getRank() + " " + newPilot.getFirstName() + " " + newPilot.getLastName()
 				+ " added to airport.");
 	}
+
 }
